@@ -1,0 +1,17 @@
+# Node
+node_modules/
+
+# Playwright
+test-results/
+playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Entornos
+.env
+.DS_Store
+.vscode/
+package-lock.json
+
+reports/
+/test-results/
