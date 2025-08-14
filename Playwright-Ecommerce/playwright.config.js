@@ -28,7 +28,9 @@ export default defineConfig({
   use: {
     /* URL base para utilizar en acciones como `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-
+    
+    screenshot: 'on',
+    video: 'on',
     /* Recopilar trazas al reintentar la prueba fallida. Consulte https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -51,30 +53,32 @@ export default defineConfig({
     },
 
     /* Probar en vistas móviles. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+
+   /*  {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'Mobile Safari',
+      use: { ...devices['iPhone 12'] },
+    }, */
 
     /* Prueba contra navegadores de marca. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    
+   /*  {
+      name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    },
+    {
+      name: 'Google Chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    }, */
   ],
 
   /* Ejecute su servidor de desarrollo local antes de iniciar las pruebas */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  /* webServer: {
+    command: 'npm run start',
+    url: 'http://localhost:3000',
+    reuseExistingServer: !process.env.CI,
+  }, */
 });
