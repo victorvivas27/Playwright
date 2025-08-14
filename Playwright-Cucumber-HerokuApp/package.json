@@ -1,0 +1,26 @@
+{
+  "name": "practica-playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "report": "node reports/generate-report.js",
+    "test": "cucumber-js",
+    "test:login": "cucumber-js --tags '@login-exitoso' --format pretty",
+    "test:login-fallido": "cucumber-js --tags '@login-fallido' --format pretty"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.1.0",
+    "@cucumber/pretty-formatter": "^2.0.1",
+    "@playwright/test": "^1.54.0",
+    "@types/node": "^24.0.13",
+    "cucumber-html-reporter": "^7.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

@@ -1,0 +1,15 @@
+
+# Playwright
+node_modules/
+
+/playwright/.cache/
+.env
+package-lock.json
+
+# Ignorar videos y capturas automáticas
+reports/videos/
+reports/screenshots/
+
+# Ignorar reportes generados
+reports/cucumber-report.*
+reports/html/
