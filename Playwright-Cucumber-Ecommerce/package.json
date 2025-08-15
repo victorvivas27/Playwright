@@ -4,12 +4,27 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "report": "node reports/generate-report.js",
+    "test": "cucumber-js --format pretty",
+    "test:login": "cucumber-js --tags '@login-exitoso' --format pretty",
+    "test:login-compra": "cucumber-js --tags '@login-compra' --format pretty",
+    "test:login-invalido": "cucumber-js --tags '@login-invalido' --format pretty",
+    "test:login-campos-vacios": "cucumber-js --tags '@login-campos-vacios' --format pretty",
+    "test:login-filtro-orden-compra": "cucumber-js --tags '@login-filtro-orden-compra' --format pretty",
+    "test:registro-compra": "cucumber-js --tags '@registro-compra' --format pretty"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.54.1",
-    "@types/node": "^24.0.13"
+    "@cucumber/cucumber": "^12.1.0",
+    "@cucumber/pretty-formatter": "^2.0.1",
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.0.13",
+    "cucumber-html-reporter": "^7.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1"
   }
 }

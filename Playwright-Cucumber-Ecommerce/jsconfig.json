@@ -1,25 +1,13 @@
 {
     "compilerOptions": {
         "target": "ES2020",
-        "module": "ESNext",
-        "moduleResolution": "Node",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "allowJs": true,
         "checkJs": false,
-        "baseUrl": "./",
-        "paths": {
-            "@pages/*": [
-                "pages/*"
-            ],
-            "@tests/*": [
-                "tests/*"
-            ],
-            "@support/*": [
-                "support/*"
-            ]
-        }
+        "baseUrl": "."
     },
-    "exclude": [
-        "node_modules",
-        "dist"
+    "include": [
+        "**/*.js"
     ]
 }
