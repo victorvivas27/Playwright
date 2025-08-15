@@ -1,11 +1,8 @@
 
-//const LoginPage = require('../step_definitions/pom/LoginPage.js');
-// const LoginPage = require('../step_definitions/pom/loginPage');
-// const SecurePage = require('../step_definitions/pom/securePage');
-
 import { After, AfterStep, Before } from "@cucumber/cucumber";
 import path from "path";
 import fs from "fs";
+import LoginHeroku from "../step_definitions/pom/LoginHeroku.js";
 
 
 // Eliminar todos los videos anteriores
@@ -22,15 +19,14 @@ if (fs.existsSync(videoDir)) {
 Before(async function () {
     // 'this' es una instancia de tu CustomWorld
     await this.init();
-    
-    //this.loginPage = new LoginPage(this.page);
+    this.loginHeroku = new LoginHeroku(this.page);
 
     const screenshotDir = 'reports/screenshots';
     if (!fs.existsSync(screenshotDir)) {
         fs.mkdirSync(screenshotDir, { recursive: true });
     }
     // Instanciamos los Page Objects para cada escenario, pasándoles la nueva página
-    // this.loginPage = new LoginPage(this.page);
+     //this.loginHeroku = new LoginHeroku(this.page);
     // this.securePage = new SecurePage(this.page);
 });
 

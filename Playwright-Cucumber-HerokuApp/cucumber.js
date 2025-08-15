@@ -22,7 +22,7 @@ const cucumberConfig = {
 
     // Permite pasar parámetros a tu World personalizado.
     worldParameters: {
-        baseUrl: 'https://the-internet.herokuapp.com/login'
+        baseUrl: 'https://the-internet.herokuapp.com/'
     }
 };
 

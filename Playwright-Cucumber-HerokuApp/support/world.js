@@ -4,7 +4,7 @@ import { chromium, firefox, webkit } from "@playwright/test";
 import dotenv from 'dotenv';
 dotenv.config();
 
-setDefaultTimeout(10000);
+setDefaultTimeout(30000);
 class PlaywrightWorld extends World {
     constructor(options) {
         super(options);
@@ -17,7 +17,6 @@ class PlaywrightWorld extends World {
         this.browserName = process.env.BROWSER || 'chromium';
         this.headless = process.env.HEADLESS !== 'false';
         this.baseURL = process.env.BASE_URL || options.parameters.baseUrl;
-        console.log('Browser a usar:', this.browserName);
     }
 
     async init() {
