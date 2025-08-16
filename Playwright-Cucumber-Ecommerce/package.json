@@ -7,7 +7,6 @@
   "scripts": {
     "report": "node reports/generate-report.js",
     "test": "cucumber-js --format pretty",
-    "test:login": "cucumber-js --tags '@login-exitoso' --format pretty",
     "test:login-compra": "cucumber-js --tags '@login-compra' --format pretty",
     "test:login-invalido": "cucumber-js --tags '@login-invalido' --format pretty",
     "test:login-campos-vacios": "cucumber-js --tags '@login-campos-vacios' --format pretty",

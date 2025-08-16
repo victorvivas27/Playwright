@@ -13,7 +13,7 @@ const {
     errorMessage,
     eliminaProductoCarrito,
     allCategory,
-    sortBy 
+    sortBy
 } = selectores;
 
 /**
@@ -21,46 +21,36 @@ const {
  */
 
 Given('Cliente existente realiza una compra completa', async function () {
-    await this.page.goto('/')
+    await this.page.goto('/');
     await expect(this.page).toHaveURL('/');
 
 });
 
 When('Cliente ingresa a la pagina de {string}', async function (ruta) {
-    await this.page.getByRole('link', { name: ruta }).click();
+    await this.loginEcommerce.byRole('link', ruta);
+    
 });
 
-When('Cliente ingresa su correo {string} y contraseña {string}', async function (email, password) {
-    await this.page.locator(email_user).fill(email);
-    await this.page.locator(password_user).fill(password);
-});
-
-When('Cliente inicia sesión', async function () {
-    await this.page.getByRole('button', { name: sign_In }).click();
+When('Cliente ingresa su correo {string} y contraseña {string} inicia sesión', async function (email, password) {
+    await this.loginEcommerce.login(email, password);
 });
 
 When('Cliente selecciona un producto {string} y agrega el producto al carrito', async function (producto) {
-
-    const card = this.page.locator('.product-card', { hasText: producto })
-    await card.getByRole('button', { name: add }).click();
+   await this.loginEcommerce.addProduct(producto);
 });
 
 When('Cliente accede al carrito de compra', async function () {
-    await this.page.locator(carrito).click();
+    await this.loginEcommerce.addCarrito();
 });
 
 When('Cliente completa la compra', async function () {
-    await this.page.getByRole('button', { name: compra }).click();
+    await this.loginEcommerce.comprar();
 });
 
 Then('debería ver un mensaje {string} de confirmación de compra', async function (mensaje) {
-    await this.page.on('dialog', async dialog => {
-        expect(dialog.type()).toBe('alert');
-        expect(dialog.message()).toBe(mensaje);
-        await dialog.accept();
-    });
-    await this.page.getByRole('button', { name: logout }).click();
+    await this.loginEcommerce.mensajeDialog(mensaje);
     await expect(this.page).toHaveURL('/');
+    await this.loginEcommerce.logout();
 });
 
 /**

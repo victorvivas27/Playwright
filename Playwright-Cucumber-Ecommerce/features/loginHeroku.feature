@@ -7,8 +7,7 @@ Feature: Funcionalidad de compra login
   @login-compra @positivo
   Scenario Outline: Iniciar sesión y completar una compra
     When Cliente ingresa a la pagina de '<ruta>'
-    And Cliente ingresa su correo '<email>' y contraseña '<password>'
-    And Cliente inicia sesión
+    And Cliente ingresa su correo '<email>' y contraseña '<password>' inicia sesión
     And Cliente selecciona un producto '<producto>' y agrega el producto al carrito
     And Cliente accede al carrito de compra
     And Cliente completa la compra

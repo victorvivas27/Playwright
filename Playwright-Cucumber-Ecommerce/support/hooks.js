@@ -6,6 +6,7 @@
 import { After, AfterStep, Before } from "@cucumber/cucumber";
 import path from "path";
 import fs from "fs";
+import { LoginEcommerce } from "../step_definitions/pom/loginEcommercePom/LoginEcommerce.js";
 
 
 // Eliminar todos los videos anteriores
@@ -23,14 +24,14 @@ Before(async function () {
     // 'this' es una instancia de tu CustomWorld
     await this.init();
     
-    //this.loginPage = new LoginPage(this.page);
+    this.loginEcommerce = new LoginEcommerce(this.page);
 
     const screenshotDir = 'reports/screenshots';
     if (!fs.existsSync(screenshotDir)) {
         fs.mkdirSync(screenshotDir, { recursive: true });
     }
     // Instanciamos los Page Objects para cada escenario, pasándoles la nueva página
-    // this.loginPage = new LoginPage(this.page);
+    this.loginEcommerce = new LoginEcommerce(this.page);
     // this.securePage = new SecurePage(this.page);
 });
 
