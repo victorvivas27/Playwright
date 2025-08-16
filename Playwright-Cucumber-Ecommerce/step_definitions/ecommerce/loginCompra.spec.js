@@ -2,26 +2,14 @@
 import selectores from "../../selector/selectores.js";
 import { Given, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-const {
-    email_user,
-    password_user,
-    sign_In,
-    add,
-    compra,
-    carrito,
-    logout,
-    errorMessage,
-    eliminaProductoCarrito,
-    allCategory,
-    sortBy
-} = selectores;
+const { errorMessage,email_user} = selectores;
 
 /**
  * Escenario de compra completa para un cliente existente
  */
 
 Given('Cliente existente realiza una compra completa', async function () {
-    await this.page.goto('/');
+    await this.loginEcommerce.gotoPage();
     await expect(this.page).toHaveURL('/');
 
 });
@@ -47,7 +35,7 @@ When('Cliente completa la compra', async function () {
     await this.loginEcommerce.comprar();
 });
 
-Then('debería ver un mensaje {string} de confirmación de compra', async function (mensaje) {
+Then('Debería ver un mensaje {string} de confirmación de compra', async function (mensaje) {
     await this.loginEcommerce.mensajeDialog(mensaje);
     await expect(this.page).toHaveURL('/');
     await this.loginEcommerce.logout();
@@ -57,18 +45,18 @@ Then('debería ver un mensaje {string} de confirmación de compra', async functi
  * Escenario de filtrar, ordenar y comprar un producto para un cliente existente
  */
 When('Cliente filtra los productos por {string}', async function (categoria) {
-    await this.page.locator(allCategory).selectOption({ label: categoria });
+    await this.loginEcommerce.filtrar(categoria);
 });
 
 When('Cliente ordena los productos por {string}', async function (orden) {
-    await this.page.locator(sortBy).selectOption({ label: orden });
+    await this.loginEcommerce.ordenar(orden);
 });
 
 /**
  * Escenario inicio de sesion credenciales invalidas
  */
 
-Then('debería ver un mensaje de error {string}', async function (mensaje) {
+Then('Debería ver un mensaje de error {string}', async function (mensaje) {
     await expect(this.page.locator(errorMessage)).toHaveText(mensaje);
 });
 
@@ -76,7 +64,7 @@ Then('debería ver un mensaje de error {string}', async function (mensaje) {
  * Escenario iniciar sesión con campos vacios
  */
 
-Then('debería ver el mensaje requerido {string}', async function (men) {
+Then('Debería ver el mensaje requerido {string}', async function (men) {
     const mensaje = await this.page.locator(email_user).evaluate(el => el.validationMessage);
     expect(mensaje).toContain(men);
 })
@@ -86,8 +74,7 @@ Then('debería ver el mensaje requerido {string}', async function (men) {
  */
 
 When('Cliente elimina el producto del carrito', async function () {
-    await this.page.locator(eliminaProductoCarrito).click();
-    await expect(this.page.locator('body')).toContainText('Your cart is empty');
+    await this.loginEcommerce.eliminaProductoCarrito();
 });
 
 Then('Deberia ver el mensaje de carrito vacio {string}', async function (mensaje) {

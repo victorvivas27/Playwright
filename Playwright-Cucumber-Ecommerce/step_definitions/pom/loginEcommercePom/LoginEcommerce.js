@@ -5,18 +5,7 @@ import { BasePage } from "../BasePage.js";
 export class LoginEcommerce extends BasePage {
     constructor(page) {
         super(page);
-        this.url = '/';
-    }
-    async gotoPage() {
-        await this.page.goto(this.url);
-    }
-
-    async inputEmail(email) {
-        await this.fillField(this.selectores.email_user, email);
-    }
-
-    async inputPassword(password) {
-        await this.fillField(this.selectores.password_user, password);
+       
     }
 
     async clickLogin() {
@@ -29,7 +18,7 @@ export class LoginEcommerce extends BasePage {
     }
 
     async addCarrito() {
-        await this.page.locator(this.selectores.carrito).click();
+        await this.click(this.selectores.carrito);
     }
 
     async comprar() {
@@ -43,6 +32,16 @@ export class LoginEcommerce extends BasePage {
             await dialog.accept();
         });
     }
+    async filtrar(categoria) {
+        await this.select(this.selectores.allCategory,categoria);
+    }
+
+    async ordenar(orden) {
+        await this.select(this.selectores.sortBy, orden);
+    }
+    async eliminaProductoCarrito(producto) {
+     await this.click(this.selectores.eliminaProductoCarrito);
+    }   
 
 
     async login(email, password) {
