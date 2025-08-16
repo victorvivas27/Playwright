@@ -1,11 +1,12 @@
+import { BasePage } from "../pom/BasePage.js";
 
-class LoginHeroku {
+class LoginHeroku  extends BasePage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.selectores = {
             inputUsername: '#username',
             inputPassword: '#password',
-            buttonLoginName: 'Login', // nombre visible del botón
+            buttonLoginName: 'Login', 
             flash: '#flash'
         };
         this.loginUrl = '/login';
@@ -15,9 +16,7 @@ class LoginHeroku {
         await this.page.goto(this.loginUrl);
     }
 
-    async fillField(selector, valor) {
-        await this.page.locator(selector).fill(valor);
-    }
+  
 
     async fillUsername(username) {
         await this.fillField(this.selectores.inputUsername, username);
@@ -28,7 +27,7 @@ class LoginHeroku {
     }
 
     async clickLogin() {
-        await this.page.getByRole('button', { name: this.selectores.buttonLoginName }).click();
+        await this.byRole('button',this.selectores.buttonLoginName);
     }
 
     getMessage() {
