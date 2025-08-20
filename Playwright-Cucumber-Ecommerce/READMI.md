@@ -1,7 +1,7 @@
 # Estructura del proyecto Playwright-Cucumber-Ecommerce
 
 ```bash
-📁 .
+📁 PLAYWRIGHT-CUCUMBER-ECOMMERCE
 ├─ 📄 cucumber.js
 ├─ 📁 features
 │ ├─ 📄 loginHeroku.feature
